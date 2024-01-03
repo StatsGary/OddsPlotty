@@ -1,0 +1,20 @@
+Package: OddsPlotty
+Type: Package
+Title: Odds Plot to Visualise a Logistic Regression Model
+Version: 1.0.2
+Authors@R: c(
+        person("Gary", "Hutson", ,"hutsons-hacks@outlook.com", role= c("aut", "cre"), comment = c(ORCID ="0000-0003-3534-6143")
+        ))
+Maintainer: Gary Hutson <hutsons-hacks@outlook.com>
+Description: Uses the outputs of a logistic regression model, from caret <https://CRAN.R-project.org/package=caret>, to build an odds plot.
+    This allows for the rapid visualisation of odds plot ratios and works best with the outputs of CARET's GLM model class, by returning the final trained model. 
+License: GPL (>= 3)
+URL: https://github.com/StatsGary/OddsPlotty
+LazyData: FALSE
+Imports:
+  caret, mlbench, magrittr, ggplot2, tibble, ggthemes, e1071, tidymodels, rmarkdown
+Suggests:
+  knitr, covr, testthat, markdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.13
+Encoding: UTF-8
