@@ -55,7 +55,8 @@
 odds_plot <- function(x, x_label = "Variables" , y_label = "Odds Ratio",
                       title = NULL, subtitle = NULL, point_col='blue',
                       error_bar_colour = "black", point_size = 5,
-                      error_bar_width = .3, h_line_color = "black"){
+                      error_bar_width = .3, h_line_color = "black",
+                      ticks){
 
   # Set the variables to null
 
@@ -71,7 +72,9 @@ odds_plot <- function(x, x_label = "Variables" , y_label = "Odds Ratio",
   odds$vars <- row.names(odds)
   odds_save <- as_tibble(odds)
   #Add ticks to lines
-  ticks <- c(seq(.1, 1, by =.1), seq(0, 10, by =1), seq(10, 100, by =10))
+  if (missing(ticks)) {
+    ticks <- c(seq(.1, 1, by =.1), seq(0, 10, by =1), seq(10, 100, by =10))
+  }
 
   plot <- ggplot(odds, aes(y= OR, x = reorder(vars, OR))) +
     geom_point(aes(color=point_col), size = point_size, color = point_col) +
