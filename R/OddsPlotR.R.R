@@ -55,7 +55,7 @@
 odds_plot <- function(x, x_label = "Variables" , y_label = "Odds Ratio",
                       title = NULL, subtitle = NULL, point_col='blue',
                       error_bar_colour = "black", point_size = 5,
-                      error_bar_width = .3, h_line_color = "black"){
+                      error_bar_width = .3, h_line_color = "black", or_lim = NULL){
 
   # Set the variables to null
 
@@ -77,7 +77,8 @@ odds_plot <- function(x, x_label = "Variables" , y_label = "Odds Ratio",
     geom_point(aes(color=point_col), size = point_size, color = point_col) +
     geom_errorbar(aes(ymin=lower, ymax=upper),
                   width= error_bar_width, colour = error_bar_colour) +
-    scale_y_log10(breaks=ticks, labels = ticks) +
+    #or_lim must have a lower value speficied to -1 to work
+    scale_y_log10(breaks=ticks, labels = ticks,limits = or_lim) + 
     geom_hline(yintercept = 1, linetype=2, color = h_line_color) +
     coord_flip() +
     labs(title = title, subtitle = subtitle, x = x_label, y = y_label) +
